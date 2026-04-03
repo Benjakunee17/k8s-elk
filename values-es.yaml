@@ -1,0 +1,28 @@
+config:
+  outputs: |
+    [OUTPUT]
+        Name es
+        Match kube.*
+        Host 43.209.5.88
+        Port 9200
+        HTTP_User elastic
+        HTTP_Passwd 9K_qsmoHnlrsaMXArKYm
+        tls On
+        tls.verify Off
+        Logstash_Format On
+        Suppress_Type_Name On
+        Retry_Limit False
+
+    [OUTPUT]
+        Name es
+        Match host.*
+        Host 43.209.5.88
+        Port 9200
+        HTTP_User elastic
+        HTTP_Passwd 9K_qsmoHnlrsaMXArKYm
+        tls On
+        tls.verify Off
+        Logstash_Format On
+        Logstash_Prefix node
+        Suppress_Type_Name On
+        Retry_Limit False

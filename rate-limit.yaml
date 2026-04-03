@@ -1,0 +1,28 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: rate-limit-5
+plugin: rate-limiting
+config:
+  minute: 5
+  policy: local
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-ingress
+  annotations:
+    konghq.com/strip-path: "true"
+    konghq.com/plugins: rate-limit-5
+spec:
+  ingressClassName: kong
+  rules:
+    - http:
+        paths:
+          - path: /echo
+            pathType: Prefix
+            backend:
+              service:
+                name: echo
+                port:
+                  number: 80

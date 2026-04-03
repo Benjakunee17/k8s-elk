@@ -1,0 +1,11 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: echo-key-auth
+plugin: key-auth
+config:
+  key_names:
+    - apikey
+  key_in_header: true
+  key_in_query: false
+  hide_credentials: true
